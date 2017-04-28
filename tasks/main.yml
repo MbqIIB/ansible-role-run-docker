@@ -21,4 +21,4 @@
     volumes: "{{ item.docker_volumes|default(omit) }}"
     expose: "{{ item.docker_expose_ports|default(omit) }}"
     ports: "{{ item.docker_port_mappings|default(omit) }}"
-  with_items: docker_settings
+  with_items: "{{ docker_settings }}"
