@@ -13,4 +13,3 @@ Author Information
 ------------------
 
 Andrew Johnson
-# ansible-role-run-docker
