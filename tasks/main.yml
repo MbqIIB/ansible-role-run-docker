@@ -1,0 +1,23 @@
+---
+# tasks file for ansible-role-run-docker
+
+- name: Install python-pip (dependency of ansible docker module)
+  package:
+    name: python-pip
+    state: latest
+
+- name: Install docker-py (dependency of ansible docker module)
+  pip:
+    name: docker-py
+    version: "{{ docker_py_version }}"
+
+- name: Run container
+  docker:
+    name: "{{ item.docker_container_name|default(omit) }}"
+    image: "{{ item.docker_image_src|default(omit) }}"
+    state: started
+    restart_policy: always
+    volumes: "{{ item.docker_volumes|default(omit) }}"
+    expose: "{{ item.docker_expose_ports|default(omit) }}"
+    ports: "{{ item.docker_port_mappings|default(omit) }}"
+  with_items: docker_settings
