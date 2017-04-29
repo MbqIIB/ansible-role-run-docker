@@ -8,5 +8,6 @@
     docker_settings:
       - docker_container_name: bash
         docker_image_src: bash
+        docker_volumes: /var/run/docker.sock:/var/run/docker.sock
   roles:
     - ansible-role-run-docker
