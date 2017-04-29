@@ -6,7 +6,7 @@
     install_docker: yes
     docker_version: docker-engine-17.04.0.ce
     docker_settings:
-      docker_container_name: bash
-      docker_image_src: bash
+      - docker_container_name: bash
+        docker_image_src: bash
   roles:
     - ansible-role-run-docker
