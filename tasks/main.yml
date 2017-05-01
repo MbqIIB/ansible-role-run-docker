@@ -14,11 +14,11 @@
 - name: Run container
   docker:
     name: "{{ item.docker_container_name|default(omit) }}"
-    image: "{{ item.docker_image_src|default(omit) }}"
+    image: "{{ item.docker_image_src }}"
     state: started
     restart_policy: always
     links: "{{ item.docker_links|default(omit) }}"
     volumes: "{{ item.docker_volumes|default(omit) }}"
     expose: "{{ item.docker_expose_ports|default(omit) }}"
     ports: "{{ item.docker_port_mappings|default(omit) }}"
-  with_items: docker_settings
+  with_items: "{{ docker_settings }}"
