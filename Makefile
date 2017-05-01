@@ -20,7 +20,7 @@ ADD tests /tmp/playbook
 ADD . /tmp/playbook/roles/$$TEST_LABEL
 WORKDIR /tmp/playbook
 RUN mkdir /tmp/playbook/roles/ansible-role-install-docker
-RUN curl -LkSs https://github.com/mGageTechOps/ansible-role-install-docker/archive/1.0.0.tar.gz | tar -zxvf - -C /tmp/playbook/roles/ansible-role-install-docker
+RUN curl -LkSs https://github.com/mGageTechOps/ansible-role-install-docker/archive/1.0.0.tar.gz | tar -zxvf - --strip-components=1 -C /tmp/playbook/roles/ansible-role-install-docker
 RUN ansible-playbook $$ANSIBLE_OPTIONS -i inventory test.yml
 endef
 export DOCKER_BODY

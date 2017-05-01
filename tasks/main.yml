@@ -14,7 +14,7 @@
 - name: Run container
   docker:
     name: "{{ item.docker_container_name|default(omit) }}"
-    image: "{{ item.docker_image_src|default(omit) }}"
+    image: "{{ item.docker_image_src }}"
     state: started
     restart_policy: always
     links: "{{ item.docker_links|default(omit) }}"
